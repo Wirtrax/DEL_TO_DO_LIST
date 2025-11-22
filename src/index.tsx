@@ -7,9 +7,10 @@ import App from './components/App';
 
 const container = document.getElementById('root');
 const root = createRoot(container as HTMLElement);
+const storeConf = store();
 root.render(
   <StrictMode>
-    <Provider store={store}>
+    <Provider store={storeConf}>
       <BrowserRouter>
         <App />
       </BrowserRouter>
