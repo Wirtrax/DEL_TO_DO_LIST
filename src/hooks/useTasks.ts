@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
-import { useAppDispatch, useAppSelector } from './redux';
-import { addTask, getAllTask, updateTaskById, removeTask } from 'app/taskList/integration/thunks/taskThunks';
+import { useAppDispatch, useAppSelector } from './useRedux';
+import { addTask, getAllTask, updateTaskById, removeTask } from 'app/taskList/service/thunks/taskThunks';
 import { CreateTask, Task } from 'types/tasks';
 
 export const useTasks = () => {

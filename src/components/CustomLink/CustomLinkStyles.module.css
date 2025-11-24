@@ -1,0 +1,68 @@
+.customLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border: none;
+  border-radius: 8px;
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  text-align: center;
+  text-wrap: nowrap;
+}
+
+.primary {
+  background-color: #656FEF;
+  color: white;
+}
+
+.primary:hover {
+  background-color: #5961ce;
+  color: white;
+  text-decoration: none;
+}
+
+.secondary {
+  background-color: #6c757d;
+  color: white;
+}
+
+.secondary:hover {
+  background-color: #545b62;
+  color: white;
+  text-decoration: none;
+}
+
+.small {
+  padding: 8px 16px;
+  font-size: 14px;
+}
+
+.medium {
+  padding: 12px 24px;
+  font-size: 16px;
+}
+
+.large {
+  padding: 16px 32px;
+  font-size: 18px;
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.customLink:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(111, 66, 193, 0.25);
+}
+
+.primary:focus {
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+.secondary:focus {
+  box-shadow: 0 0 0 3px rgba(108, 117, 125, 0.25);
+}

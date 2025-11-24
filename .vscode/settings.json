@@ -8,5 +8,6 @@
   "stylelint.validate": [
     "css",
     "scss"
-  ]
+  ],
+  "liveServer.settings.port": 5501
 }

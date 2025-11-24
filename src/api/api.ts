@@ -21,6 +21,13 @@ export const updateTasks = async (id: string, taskData: UpdateTask): Promise<Tas
   return response.data;
 };
 
-export const deleteTask = async (id: number): Promise<void> => {
+export const deleteTask = async (id: number): Promise<number> => {
   const response = await apiClient.delete(`/tasks/${id}`);
+
+  // Проверяем успешный статус
+  if (response.status >= 200 && response.status < 300) {
+    return id; // Возвращаем ID удаленной задачи
+  } else {
+    throw new Error(`Delete failed with status: ${response.status}`);
+  }
 };
