@@ -1,17 +1,27 @@
-import { useEffect, useState } from 'react';
-import Notification from '../../components/Notification/Notification';
+import { Route, Routes } from 'react-router-dom';
+import CustomInput from '../../components/CustomInput/CustomInput';
 import TaskList from './components/TasksList/TaskList';
-import CustomLink from 'components/CustomLink/CustomLink';
-import { useTasks } from 'src/hooks/useTasks';
-import TasksContainer from 'components/TasksContainer/TasksContainer';
-import TaskHolder from 'components/TasksContainer/TaskHolder/TaskHolder';
-import { SearchInput } from 'components/SearchInput';
-
+import UpdateFrom from './components/UpdateForm/UpdateTaskForm';
+import CreateTaskFrom from './components/CreateTaskFrom/CreateTaskFrom';
+import Modal from 'components/Modal/Modal';
+import { PageContainer } from 'components/PageContainer';
 function App() {
   return (
-    <>
-      <TaskList></TaskList>
-    </>
+    <PageContainer>
+      {/*
+
+      <Modal
+        onClose={() => {
+          return 0;
+        }}>
+        <UpdateFrom></UpdateFrom>
+      </Modal> */}
+
+      <Routes>
+        <Route path="/" element={<TaskList />} />
+        <Route path="/create" element={<CreateTaskFrom />} />
+      </Routes>
+    </PageContainer>
   );
 }
 

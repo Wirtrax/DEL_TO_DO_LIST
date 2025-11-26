@@ -11,10 +11,11 @@
   transition: all 0.2s ease-in-out;
   text-align: center;
   text-wrap: nowrap;
+  margin-top: 10px;
 }
 
 .primary {
-  background-color: #656FEF;
+  background-color: rgb(101, 110, 239);
   color: white;
 }
 
@@ -25,7 +26,7 @@
 }
 
 .secondary {
-  background-color: #6c757d;
+  background-color: rgb(108, 117, 125);
   color: white;
 }
 
@@ -60,7 +61,7 @@
 }
 
 .primary:focus {
-  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+  box-shadow: 0 0 0 3px rgba(101, 110, 239, 0.25);
 }
 
 .secondary:focus {

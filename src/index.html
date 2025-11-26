@@ -15,6 +15,7 @@
   </head>
   <body>
   <div id="root" class="root"></div>
+  <div id="root-modal"></div>
   <% for (var js in htmlWebpackPlugin.files.js) { %>
     <link as="script" href="<%= htmlWebpackPlugin.files.js[js] %>"
           onload="const script = document.createElement('script'); script.src = this.href; document.body.appendChild(script);"

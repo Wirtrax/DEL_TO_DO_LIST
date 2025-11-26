@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { Task, Tasks, CreateTask, UpdateTask } from '../types/tasks';
 import { apiClient } from './utils/requestAgent';
 
@@ -24,9 +25,8 @@ export const updateTasks = async (id: string, taskData: UpdateTask): Promise<Tas
 export const deleteTask = async (id: number): Promise<number> => {
   const response = await apiClient.delete(`/tasks/${id}`);
 
-  // Проверяем успешный статус
   if (response.status >= 200 && response.status < 300) {
-    return id; // Возвращаем ID удаленной задачи
+    return id;
   } else {
     throw new Error(`Delete failed with status: ${response.status}`);
   }

@@ -1,0 +1,33 @@
+.form {
+  text-align: left;
+  color: white;
+  padding: 5%;
+}
+
+.button {
+  border: none;
+  border-radius: 8px;
+  font-family: inherit;
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+  text-align: center;
+  text-wrap: nowrap;
+  margin-top: 10px;
+  width: 100%;
+  padding: 5px 8px;
+}
+.button:focus {
+  outline: none;
+  border-color: #cdcdce;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+.primary {
+  background-color: rgb(101, 110, 239);
+  color: white;
+}
+
+.primary:hover {
+  background-color: #5961ce;
+  color: rgba(255, 255, 255, 0.774);
+  text-decoration: none;
+}

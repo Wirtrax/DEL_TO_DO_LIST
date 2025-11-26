@@ -2,6 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  column-gap: 10px;
   padding: 10px;
   background-color:#F8F7FE ;
   border-radius: 10px;
@@ -12,6 +13,10 @@
 .task__title{
   font-size: 20px;
   font-weight: bold;
+  user-select: none;
+}
+.through{
+  text-decoration: line-through;
 }
 
 .task__buttonGroup{

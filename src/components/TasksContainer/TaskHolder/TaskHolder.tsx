@@ -1,23 +1,25 @@
 import styles from './TaskHolderStyle.module.css';
+import { Task } from 'types/tasks';
 interface TaskHolderProps {
   label: string;
   idTasks: number;
   taskName: string;
+  complete?: boolean;
   onDelete: (id: number) => void;
-  onUpdate: (id: number) => void;
+  onCompleted: (id: number, data: Task) => void;
 }
 
-const TaskHolder: React.FC<TaskHolderProps> = ({ label, idTasks, taskName, onDelete, onUpdate }) => {
+const TaskHolder: React.FC<TaskHolderProps> = ({ label, idTasks, taskName, onDelete, onCompleted, complete }) => {
   const handleDelete = () => {
     onDelete(idTasks);
   };
 
   const handleUpdate = () => {
-    onUpdate(idTasks);
+    onCompleted(idTasks, { isCompleted: complete });
   };
   return (
     <div className={styles.task}>
-      <h4 className={styles.task__title}>
+      <h4 className={`${styles.task__title} ${complete ? styles.through : ''}`} onClick={handleUpdate}>
         <span>{label}</span>: <span>{taskName}</span>
       </h4>
       <div className={styles.task__buttonGroup}>
@@ -55,7 +57,7 @@ l0 -88 -487 -3 c-475 -3 -489 -4 -534 -24 -60 -28 -125 -93 -152 -153 -30 -64
             </g>
           </svg>
         </button>
-        <button onClick={handleUpdate} className={styles.task__button}>
+        <button className={styles.task__button}>
           <svg
             version="1.0"
             xmlns="http://www.w3.org/2000/svg"

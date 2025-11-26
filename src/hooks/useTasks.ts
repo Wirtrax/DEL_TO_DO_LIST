@@ -6,7 +6,7 @@ import { CreateTask, Task } from 'types/tasks';
 export const useTasks = () => {
   const dispatch = useAppDispatch();
 
-  const { tasks, isLoading, error, currentTask } = useAppSelector((state) => state.taskReducer);
+  const { tasks, isLoading, error, currentTask } = useAppSelector((state) => state.task);
 
   const getTasks = useCallback(() => {
     dispatch(getAllTask());

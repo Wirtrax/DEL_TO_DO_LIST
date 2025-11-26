@@ -1,5 +1,7 @@
 import { combineReducers } from '@reduxjs/toolkit';
 import taskReducer from './TasksSlice';
+import sortingReducer from './filtersSlice';
 export const rootReducer = combineReducers({
-  taskReducer,
+  task: taskReducer,
+  sorting: sortingReducer,
 });
