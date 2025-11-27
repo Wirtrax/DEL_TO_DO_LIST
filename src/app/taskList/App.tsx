@@ -7,6 +7,7 @@ import Modal from 'components/Modal/Modal';
 import { PageContainer } from 'components/PageContainer';
 import { useRouteState } from 'src/hooks/useRouteState';
 import { RouteModalState } from 'types/routeState';
+import NotFound from 'components/NotFound/NotFound';
 function App() {
   const navigate = useNavigate();
   const location = useLocation();
@@ -35,6 +36,7 @@ function App() {
         <Route path="/" element={<TaskList />} />
         <Route path="/create" element={<CreateTaskFrom />} />
         <Route path="/update/:id" element={<UpdateFrom />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
 
       {backgroundLocation && (

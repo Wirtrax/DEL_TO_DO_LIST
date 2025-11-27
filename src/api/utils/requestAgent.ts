@@ -14,7 +14,7 @@ export const apiClient = axios.create({
 
 apiClient.interceptors.response.use(
   (response) => {
-    console.log('успешный запрос');
+    // console.log('успешный запрос');
     return response;
   },
   (error) => {
@@ -22,20 +22,20 @@ apiClient.interceptors.response.use(
       const status = error.response?.status;
       const message = error.response?.data?.errText || error.message;
 
-      console.log(`Error ${status}:`, message);
+      console.log(`Logger: Error ${status}:`, message);
 
       switch (status) {
         case 404:
-          console.log('Ресурс не найден');
+          console.log('Logger: Ресурс не найден');
           break;
         case 500:
-          console.log('Ошибка сервера');
+          console.log('Logger: Ошибка сервера');
           break;
         default:
-          console.log('Неизвестная ошибка');
+          console.log('Logger: Неизвестная ошибка');
       }
     } else if (error instanceof Error) {
-      console.log('Network error:', error.message);
+      console.log('Logger: Network error:', error.message);
     }
 
     return Promise.reject(error);

@@ -40,7 +40,7 @@ const CreateTaskFrom = () => {
           state: {
             fromCreate: true,
             success: true,
-            message: 'Задача успешно создана',
+            message: 'Task created successfully',
           },
         });
       }, 1000);
@@ -50,7 +50,7 @@ const CreateTaskFrom = () => {
           state: {
             fromCreate: true,
             success: false,
-            message: 'Ошибка при создании задачи',
+            message: 'Error creating task',
           },
         });
       }, 1000);
