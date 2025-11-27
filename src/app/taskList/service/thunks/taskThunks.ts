@@ -1,10 +1,18 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { createTask, deleteTask, getTasks, updateTasks } from 'api/api';
+import { createTask, deleteTask, getTaskById, getTasks, updateTasks } from 'api/api';
 import { CreateTask, UpdateTask } from 'types/tasks';
 
 export const getAllTask = createAsyncThunk('tasks/fetchAll', async (_, { rejectWithValue }) => {
   try {
     return await getTasks();
+  } catch (error) {
+    return rejectWithValue(error);
+  }
+});
+
+export const getAloneTask = createAsyncThunk('tasks/fetchOne', async (id: string, { rejectWithValue }) => {
+  try {
+    return await getTaskById(id);
   } catch (error) {
     return rejectWithValue(error);
   }

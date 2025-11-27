@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { Task, Tasks, CreateTask, UpdateTask } from '../types/tasks';
 import { apiClient } from './utils/requestAgent';
 

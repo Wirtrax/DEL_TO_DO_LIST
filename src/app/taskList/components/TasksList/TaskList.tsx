@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import styles from './TasksListStyle.module.css';
 import CustomLink from 'components/CustomLink/CustomLink';
 import { SearchInput } from 'components/SearchInput';
@@ -12,12 +13,27 @@ import { useRouteState } from 'src/hooks/useRouteState';
 import { Inotification } from 'types/notification';
 import { useSorting } from 'src/hooks/useSorting';
 import { getSortedTasks } from 'src/utils/taskSorting';
+import { RouteNotoficationState } from 'types/routeState';
+import { Loader } from 'components/Loader';
 
 function TaskList() {
-  const { historyState, clearHistoryState } = useRouteState();
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const { historyState, clearHistoryState } = useRouteState<RouteNotoficationState>();
   const [notification, setNotification] = useState<Inotification | null>(null);
-  const { tasks, getTasks, deleteTask, updateTask } = useTasks();
+  const { tasks, getTasks, deleteTask, updateTask, isLoading, error } = useTasks();
   const { sorting, setSearchTerm, setSortBy } = useSorting();
+
+  useEffect(() => {
+    if (error && Object.keys(error).length > 0) {
+      setNotification({
+        show: true,
+        type: 'error',
+        message: 'Operation failed. Please try again.',
+      });
+    }
+  }, [error]);
 
   useEffect(() => {
     getTasks();
@@ -34,7 +50,7 @@ function TaskList() {
       setNotification(newNotification);
       clearHistoryState();
     }
-  }, []);
+  }, [historyState, clearHistoryState]);
 
   useEffect(() => {
     if (notification?.show) {
@@ -48,37 +64,43 @@ function TaskList() {
 
   const handleDeleteTask = async (id: number) => {
     try {
-      await deleteTask(id);
-      setNotification({
-        show: true,
-        type: 'success',
-        message: 'Task deleted successfully',
-      });
+      const result = await deleteTask(id).unwrap();
+      if (result) {
+        setNotification({
+          show: true,
+          type: 'success',
+          message: 'Task deleted successfully',
+        });
+      }
     } catch (error) {
-      setNotification({
-        show: true,
-        type: 'error',
-        message: 'Failed to delete task',
-      });
+      // console.log('Delete task error:', error);
     }
   };
 
   const handleCompletedTask = async (id: number, data: Task) => {
     const newCompletedState = !data.isCompleted;
     try {
-      await updateTask(id, { isCompleted: newCompletedState });
-      setNotification({
-        show: true,
-        type: 'success',
-        message: 'Task completed successfully',
-      });
+      const result = await updateTask(id, { isCompleted: newCompletedState }).unwrap();
+      if (result) {
+        setNotification({
+          show: true,
+          type: 'success',
+          message: 'Task updated successfully',
+        });
+      }
     } catch (error) {
-      setNotification({
-        show: true,
-        type: 'error',
-        message: 'Failed to update task',
-      });
+      // console.log('Update task error:', error);
     }
+  };
+
+  const handleUpdateTask = (id: number) => {
+    navigate(`/update/${id}`, {
+      state: {
+        modal: true,
+        background: location,
+        taskId: id,
+      },
+    });
   };
 
   const handleSearchChange = (value: string) => {
@@ -101,23 +123,26 @@ function TaskList() {
         </div>
       </div>
       <TasksContainer>
-        {sortedTasks.map((task) => {
-          if (!task.id || !task.info || !task.name) {
-            return null;
-          }
+        <Loader isLoading={isLoading}>
+          {sortedTasks.map((task) => {
+            if (!task.id || !task.info || !task.name) {
+              return null;
+            }
 
-          return (
-            <TaskHolder
-              key={task.id}
-              label={task.info}
-              idTasks={task.id}
-              taskName={task.name}
-              complete={task.isCompleted}
-              onDelete={handleDeleteTask}
-              onCompleted={handleCompletedTask}
-            />
-          );
-        })}
+            return (
+              <TaskHolder
+                key={task.id}
+                label={task.info}
+                idTasks={task.id}
+                taskName={task.name}
+                complete={task.isCompleted}
+                onDelete={handleDeleteTask}
+                onUpdate={handleUpdateTask}
+                onCompleted={handleCompletedTask}
+              />
+            );
+          })}
+        </Loader>
       </TasksContainer>
       <CustomLink to="/create" label="New Task" fullWidth={true} />
       {notification && <Notification label={notification.message} status={notification.type} />}

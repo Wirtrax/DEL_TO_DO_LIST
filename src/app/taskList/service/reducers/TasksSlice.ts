@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { addTask, getAllTask, updateTaskById, removeTask } from '../thunks/taskThunks';
+import { addTask, getAllTask, updateTaskById, removeTask, getAloneTask } from '../thunks/taskThunks';
 import { errorTask, Tasks, Task } from 'types/tasks';
 
 interface TaskState {
@@ -19,11 +19,7 @@ const initialState: TaskState = {
 export const TasksSlice = createSlice({
   name: 'tasks',
   initialState,
-  reducers: {
-    setCurrentTask: (state, action: PayloadAction<Task | null>) => {
-      state.currentTask = action.payload;
-    },
-  },
+  reducers: {},
   extraReducers(builder) {
     const handlePending = (state: TaskState) => {
       state.isLoading = true;
@@ -42,6 +38,14 @@ export const TasksSlice = createSlice({
         state.error = {};
       })
       .addCase(getAllTask.rejected, handleRejected)
+
+      .addCase(getAloneTask.pending, handlePending)
+      .addCase(getAloneTask.fulfilled, (state: TaskState, action: PayloadAction<Task>) => {
+        state.isLoading = false;
+        state.currentTask = action.payload;
+        state.error = {};
+      })
+      .addCase(getAloneTask.rejected, handleRejected)
 
       .addCase(addTask.pending, handlePending)
       .addCase(addTask.fulfilled, (state: TaskState, action: PayloadAction<Task>) => {
@@ -70,5 +74,4 @@ export const TasksSlice = createSlice({
   },
 });
 
-export const { setCurrentTask } = TasksSlice.actions;
 export default TasksSlice.reducer;

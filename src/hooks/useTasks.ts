@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 import { useAppDispatch, useAppSelector } from './useRedux';
-import { addTask, getAllTask, updateTaskById, removeTask } from 'app/taskList/service/thunks/taskThunks';
+import { addTask, getAllTask, updateTaskById, removeTask, getAloneTask } from 'app/taskList/service/thunks/taskThunks';
 import { CreateTask, Task } from 'types/tasks';
 
 export const useTasks = () => {
@@ -11,6 +11,13 @@ export const useTasks = () => {
   const getTasks = useCallback(() => {
     dispatch(getAllTask());
   }, [dispatch]);
+
+  const getOneTask = useCallback(
+    (id: string) => {
+      dispatch(getAloneTask(id));
+    },
+    [dispatch]
+  );
 
   const createTask = useCallback(
     (taskData: CreateTask) => {
@@ -38,6 +45,7 @@ export const useTasks = () => {
     error,
     currentTask,
     getTasks,
+    getOneTask,
     createTask,
     updateTask,
     deleteTask,

@@ -31,3 +31,6 @@
   color: rgba(255, 255, 255, 0.774);
   text-decoration: none;
 }
+.errorContainer{
+  color: red;
+}
