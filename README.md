@@ -1,66 +1,37 @@
-# React todo project
+# 📋 Advanced Todo App (DEL)
 
-npm run dev - запустить проект
+## 📌 About
+Advanced Todo App is a feature-rich task management application developed as part of an internship assignment for Liga Digital Economy.  
+The project demonstrates modern frontend development practices using a powerful React + TypeScript ecosystem with state management, API integration, and form handling.
 
-## Пример итогового проекта
+## ✨ Features
+- 📝 Full task management (create, update, delete)
+- 🔄 Server state management with RTK Query
+- 📡 API integration using Axios
+- 🧠 Global state management with Redux Toolkit
+- 📄 Advanced form handling with React Hook Form
+- 🔀 Client-side routing with React Router
+- ⚡ Optimized and scalable architecture
+- 📱 Responsive UI
 
-https://todo-liga-internship.vercel.app/
+## 🛠 Tech Stack
 
-## Технологии которые используются в проекте
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![Redux Toolkit](https://img.shields.io/badge/redux_toolkit-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white)
+![RTK Query](https://img.shields.io/badge/rtk_query-%23000000.svg?style=for-the-badge&logo=redux&logoColor=white)
+![React Router](https://img.shields.io/badge/react_router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
+![Axios](https://img.shields.io/badge/axios-%235A29E4.svg?style=for-the-badge&logo=axios&logoColor=white)
+![React Hook Form](https://img.shields.io/badge/react_hook_form-%23EC5990.svg?style=for-the-badge&logo=reacthookform&logoColor=white)
+![Webpack](https://img.shields.io/badge/webpack-%238DD6F9.svg?style=for-the-badge&logo=webpack&logoColor=black)
 
-React, React-router-dom, Typescript, Redux, Axios, React Hook Form, Yup
-Webpack, Eslint, Prettier
+## ⚙️ Installation & Run
 
-## Структура шаблона
-
-```
-.
-├── .vscode                                  # конфигурация под vs-code
-├── dist                                     # папка для билда (появится после npm run build)
-├── config
-│   ├── constants.js                           # константные пути к файлам и папкам
-│   ├── css.modules.config.js                   # конфигурация css modules
-│   ├── jest.config.js                          # конфигурация jest
-│   ├── postcss.config.js                       # конфигурация postcss
-│   ├── svgo.config.js                          # конфигурация обработки svg
-│   ├── test.config.js                          # конфигурация окружения Jest, React Testing Library
-│   ├── webpack.config.cache.js                 # конфигурация кеширования окружения webpack
-│   ├── webpack.config.dev.js                   # конфигурация dev окружения webpack
-│   ├── webpack.config.env.js                   # парсинг .env и проброс переменных в webpack
-│   ├── webpack.config.https.js                 # конфигурация dev сервера с https
-│   ├── webpack.config.js                       # базовый конфиг webpack
-│   ├── webpack.config.modules.js               # обработка путей к папкам из tsconfig для webpack
-│   ├── webpack.config.prod.js                  # конфигурация сборки
-│   └── webpack.config.styles.js                # конфигурация обработчиков css
-├── src
-|   ├── api                                    # папка для работы с сетью, создаются файлы под каждую сущность
-│   ├── app                                    # основные компоненты с бизнес-логикой
-│       ├── taskList                             # например, папка taskList, в которой содержится компонент страницы списка задач
-│           ├── components                         # внутренние компоненты
-│           ├── integration                        # файлы для redux
-|           ├── TaskList.tsx                       # корневой файл компонента
-|           ├── TaskList.types.ts                  # типы для компонента, например интерфейс пропсов TaskListProps
-│   ├── components                             # папка для компонентов без бизнес-логики (dumb components)
-│   ├── constants                              # общие константы разбитые по файлам
-│   ├── mocks                                  # папка для всех моков
-│   ├── types                                  # интерфейсы для сущностей, например для Task
-│   ├── utils                                  # вспомогательные функции, также разбиваем по файлам. Например, delay.ts
-│   ├── index.html                             # корневой html
-│   ├── index.tsx                              # точка входа в приложение для webpack
-│   ├── App.tsx                                # точка входа в приложение, роутер
-│   ├── react-app-env.d.ts                     # декларация модулей и переменных
-├── .browserlistsrc                          # список браузеров для autoprefixer
-├── .editorconfig                             # настройки для редакторов
-├── .eslintignore                            # игнорирование eslint
-├── .eslintrc                                # Конфиг Eslint
-├── .gitignore                               # Игнор файл для гита
-├── .prettierrc                              # Конфиг prettier
-├── package.json
-├── tsconfig.json                             # Конфиг тайпскрипта
-└── README.md
-```
-
-## Правила по проекту
+```bash
+git clone https://github.com/Wirtrax/DEL_TO_DO_LIST.git
+cd DEL_TO_DO_LIST
+npm install
+npm run dev
 
 1. Один файл – один компонент
 2. Импорты должны быть абсолютными
