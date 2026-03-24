@@ -2,7 +2,7 @@
 
 ## 📌 About
 Advanced Todo App is a feature-rich task management application developed as part of an internship assignment for Liga Digital Economy.  
-The project demonstrates modern frontend development practices using a powerful React + TypeScript ecosystem with state management, API integration, and form handling.
+The project demonstrates modern frontend development practices using a powerful React + TypeScript ecosystem with state management, API integration, and form handling, including robust validation via Yup.
 
 ## ✨ Features
 - 📝 Full task management (create, update, delete)
@@ -10,6 +10,7 @@ The project demonstrates modern frontend development practices using a powerful 
 - 📡 API integration using Axios
 - 🧠 Global state management with Redux Toolkit
 - 📄 Advanced form handling with React Hook Form
+- ✅ Form validation with Yup
 - 🔀 Client-side routing with React Router
 - ⚡ Optimized and scalable architecture
 - 📱 Responsive UI
@@ -23,6 +24,7 @@ The project demonstrates modern frontend development practices using a powerful 
 ![React Router](https://img.shields.io/badge/react_router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
 ![Axios](https://img.shields.io/badge/axios-%235A29E4.svg?style=for-the-badge&logo=axios&logoColor=white)
 ![React Hook Form](https://img.shields.io/badge/react_hook_form-%23EC5990.svg?style=for-the-badge&logo=reacthookform&logoColor=white)
+![Yup](https://img.shields.io/badge/yup-%23FF0000.svg?style=for-the-badge&logo=red&logoColor=white)
 ![Webpack](https://img.shields.io/badge/webpack-%238DD6F9.svg?style=for-the-badge&logo=webpack&logoColor=black)
 
 ## ⚙️ Installation & Run
